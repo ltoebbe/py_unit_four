@@ -3,20 +3,20 @@ import random
 
 def who_wins(user, computer):
     # 1 is rock, 2 is paper, 3 is scissors, 4 is lizard, 5 is spock
-    rock_victory = rock + scissors
-    rock_victory = rock + lizard
+    rock_victory = 1 + 3
+    rock_victory = 1 + 4
 
-    paper_victory = paper + rock
-    paper_victory = paper + spock
+    paper_victory = 2 + 1
+    paper_victory = 2 + 5
 
-    scissors_victory = scissors + paper
-    scissors_victory = scissors + lizard
+    scissors_victory = 3 + 2
+    scissors_victory = 3 + 4
 
-    lizard_victory = lizard + paper
-    lizard_victory = lizard + spock
+    lizard_victory = 4 + 2
+    lizard_victory = 4 + 5
 
-    spock_victory = spock + rock
-    spock_victory = spock + scissors
+    spock_victory = spock + 1
+    spock_victory = spock + 3
 
 
 
