@@ -27,13 +27,16 @@ import random
 
 
 def get_card():
-    return random.randint(1, 10)
+    drawn_card = random.randint(1, 10)
+    print("you drew a",drawn_card)
+    return drawn_card
 
 
 def user_total():
     u_card1 = get_card()
     print("you drew a ", u_card1)
     print("your total is now ", u_current + u_card1)
+    return
 
 
 def dealer_total():
@@ -51,12 +54,19 @@ def get_winner(user_total, dealer_total):
     elif user_total <= 21 and dealer_total > 21:
         print("you win!")
     elif user_total < 21 and dealer_total < 21:
-        input("the scores are ", user_total, dealer_total, ", would you like to draw another card? type 'y' for yes, 'n' for no.")
-            if input = y:
-                get_card()
-            if input = n:
-                get_winner(user_total, dealer_total)
+        user_choice = input("the scores are ", user_total, dealer_total, ", would you like to draw another card? type 'y' for yes, 'n' for no.")
+        if user_choice == "y":
+            get_card()
+        if user_choice == "n":
+            get_winner(user_total, dealer_total)
+def main():
+    user_number = 0
+    for x in range(3):
+        user_number = user_number + get_card()
+        print(user_number)
 
-# i'm gonna have a freaking conniption
-# i can't make it work
-# (-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄_-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ )
+
+  #  dealers_number = dealer_total()
+
+
+main()
