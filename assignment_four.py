@@ -4,69 +4,87 @@
 
 import random
 
-# define get_card function
-# define get_user_total and get_dealer_total
-# define get_winner
-#   if user_total > 21, display lose
-#   if user_total < dealer_total and dealer_total <= 21, display lose
 
-# ask user if they want to play 21
-#   if yes, continue. if no, print 'see you later then! :)'
-# ask user to pull a card
-# generate a random number between 1 and 10 called user_card
-# generate a second random number between 1 and 10 called dealer_card
-# print results
-# ask user if they want to draw again
-#   if yes, continue. if no, run get_winner and display results
-# generate a random number between 1 and 10 called user_card
-# generate a second random number between 1 and 10 called dealer_card
-# add user's cards and dealer's cards
-# print results
-# ask user if they want to draw again
-#   if yes, continue. if no, run get_winner and display results
+def random_card():
+    """draws a random card"""
+    return(random.randint(1,11))
 
 
-def get_card():
-    drawn_card = random.randint(1, 10)
-    print("you drew a",drawn_card)
-    return drawn_card
+def who_wins(user,computer):
+    '''determines who wins
+
+    :param user: user's current total
+    :param computer: dealer's current total
+    :return: who wins
+    '''
+    print("you have",user,", I have", computer)
+    if user > 21:
+        return "you lose!"
+    elif computer > 21:
+        return "I lose!"
+    elif user > 21 and computer > 21:
+        return "we both lose!"
+    elif user > computer:
+        return "you win!"
+    elif computer> user:
+        return "I win!"
+    elif user == computer:
+        return "its a tie!"
 
 
-def user_total():
-    u_card1 = get_card()
-    print("you drew a ", u_card1)
-    print("your total is now ", u_current + u_card1)
-    return
+
+def dealers_cards(computer):
+    """determines dealer's cards
+
+    :param computer: the dealer
+    :return: total cards
+    """
+    dtotal = random_card()
+    #print("I drew a", dtotal)
+    computer = computer + dtotal
+    return computer
+
+def third_card(user):
+    """asks user if they want to draw another card
+
+    :param user: user's total
+    :return: The users total with new card if yes
+    """
+    choice = input("would you like to draw another card? Type 'yes' or 'no'")
+    if choice == "yes":
+        r = random_card()
+        print("you drew a", r)
+        print("Your current total is", r + user)
+        return r
+    else:
+        print("Your current total is", user)
+        return user
 
 
-def dealer_total():
-    d_card1 = get_card()
-    print("I drew a ", d_card1)
-    print("my total is now ", d_current + d_card1)
 
-
-def get_winner(user_total, dealer_total):
-    if user_total > 21 and dealer_total > 21:
-        print("both lose!")
-    elif user_total > 21 and dealer_total <= 21:
-        print("I win "
-              "gg ez")
-    elif user_total <= 21 and dealer_total > 21:
-        print("you win!")
-    elif user_total < 21 and dealer_total < 21:
-        user_choice = input("the scores are ", user_total, dealer_total, ", would you like to draw another card? type 'y' for yes, 'n' for no.")
-        if user_choice == "y":
-            get_card()
-        if user_choice == "n":
-            get_winner(user_total, dealer_total)
 def main():
-    user_number = 0
-    for x in range(3):
-        user_number = user_number + get_card()
-        print(user_number)
+    """
+    let's put it all together :D
+    :return: Who wins, and the game
+    """
+    user = random_card()
+    print("your first card is", user)
+    second_card = random_card()
+    print("your second card is", second_card)
+    user = user + second_card
+    print("your total is", user)
 
 
-  #  dealers_number = dealer_total()
+    computer = 0
+    dealers_total = dealers_cards(computer)
+    #print("my total is", dealers_total)
 
+    dealers_total2 = dealers_cards(dealers_total)
+    #print("my total is", dealers_total2)
+
+
+    third_card(user)
+
+    print(who_wins(user, dealers_total2))
 
 main()
